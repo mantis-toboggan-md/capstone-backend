@@ -278,7 +278,7 @@ module.exports = {
     water: 4325,
     ghg: 4.12
   },
-  eggs: {
+  egg: {
     land: 3.5,
     water: 3265,
     ghg: 3.39
@@ -298,13 +298,4 @@ module.exports = {
     usda: 'finfish and shellfish',
     ghg: 4.41
   },
-  shrimp: {
-    ghg: 14.85
-  },
-  rice: {
-    ghg: 2.66
-  },
-  cream: {
-    ghg: 5.32
-  }
 }

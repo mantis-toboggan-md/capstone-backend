@@ -19,7 +19,7 @@ var routes_setter = require('./config/routes.js');
 routes_setter(app);
 
 
-app.listen(port, function() {
+app.listen(port, "127.0.0.1", function() {
   console.clear()
   console.log(cowsay.say({
     text: `server now listening on port ${port}`,
