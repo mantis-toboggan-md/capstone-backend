@@ -216,86 +216,203 @@ let foodGroupsUSDA = [
   'Finfish and Shellfish'
 ]
 
-
+const avgArray = (arr)=>{
+  return arr.reduce((n,tot)=>{
+    return tot += n
+  })/arr.length
+}
 module.exports = {
+  envCategories: {
+    vegetableFats: {
+      usda:'fats and oils',
+      land: 20.7,
+      water: 2364
+    },
+    cereal: {
+      usda: 'cereal grains',
+      land: 1.4,
+      water: 1644,
+      ghg: 0.53
+    },
+    vegetables: {
+      usda: 'vegetables',
+      land: 0.3,
+      water: 322,
+      ghg: 0.47
+    },
+    sugar: {
+      land: 1.2,
+      water: 197
+    },
+    fruit: {
+      usda: 'fruits',
+      land: 0.5,
+      water: 962,
+      ghg: 0.5
+    },
+    legumes: {
+      usda: 'legumes',
+      land: 0.3,
+      water: 4055,
+      ghg: 0.66
+    },
+    milk : {
+      land: 1.2,
+      water: 1020,
+      ghg: 1.39
+    },
+    butter: {
+      land: 13.8,
+      water: 5553,
+      ghg: 11.52
+    },
+    cheese: {
+      land: 10.2,
+      water: 310+439+4264,
+      ghg: 8.86
+    },
+    beef: {
+      usda:'beef',
+      land: 20.9,
+      water: 15415,
+      ghg: 28.73
+    },
+    chicken: {
+      usda: 'poultry',
+      land: 7.3,
+      water: 4325,
+      ghg: 4.12
+    },
+    egg: {
+      land: 3.5,
+      water: 3265,
+      ghg: 3.39
+    },
+    pork: {
+      usda:'pork',
+      land: 8.9,
+      water: 5988,
+      ghg: 5.85
+    },
+    lamb: {
+      usda: 'lamb, veal, and game',
+      water: 8763,
+      ghg: 27.91
+    },
+    fish: {
+      usda: 'finfish and shellfish',
+      ghg: 4.41
+    },
+  },
+  ratingBins: {
+    land: {
+      good: 0.2119 - (0.1527/2),
+      fair: 0.2119,
+      poor: 0.2119 + (0.1527/2)
+    },
+    water: {
+      good: 0.1624 - (0.09166/2),
+      fair: 0.1624,
+      poor: 0.1624 + (0.09166/2)
+    },
+    ghg: {
+      good: 0.2802 - (0.255/2),
+      fair: 0.2802,
+      poor: 0.2802 + (0.255/2)
+    }
+  }
+}
+
+let per100Cat = {
   vegetableFats: {
-    usda:'fats and oils',
-    land: 20.7,
-    water: 2364
+    land: avgArray([0.23483193277310926]),
+    water: avgArray([0.026818487394957985])
   },
   cereal: {
-    usda: 'cereal grains',
-    land: 1.4,
-    water: 1644,
-    ghg: 0.53
+    land:	avgArray([0.0411908931698774 ,0.1383132530120482, 	0.037261538461538464,	0.34840909090909095]),
+    water: avgArray([0.04836987740805604, 0.16241927710843374, 	0.043755692307692315, 0.40913181818181815]),
+    ghg: avgArray([0.015593695271453588, 0.05236144578313253, 	0.014106153846153846, 0.13189772727272728])
   },
   vegetables: {
-    usda: 'vegetables',
-    land: 0.3,
-    water: 322,
-    ghg: 0.47
+    land: avgArray([0.08806451612903224, 0.14888888888888888, 	0.09677419354838708]),
+    water: avgArray([0.09452258064516127, 0.15980740740740743, 	0.10387096774193548]),
+    ghg: 	avgArray([0.13796774193548383, 	0.23325925925925925, 	0.15161290322580645])
   },
   sugar: {
-    land: 1.2,
-    water: 197
+    land: 	0.03272727272727272,
+    water: 0.005372727272727273
   },
   fruit: {
-    usda: 'fruits',
-    land: 0.5,
-    water: 962,
-    ghg: 0.5
+    land: avgArray([0.10377358490566038, 0.10472972972972973, 	0.05625,	0.08809523809523809]),
+    water: avgArray([0.19966037735849057, 0.2015, 	0.108225,	0.1694952380952381]),
+    ghg: avgArray([0.10377358490566038, 0.10472972972972973, 0.05625, 	0.08809523809523809])
   },
   legumes: {
-    usda: 'legumes',
-    land: 0.3,
-    water: 4055,
-    ghg: 0.66
+    land: avgArray([0.00900489396411093,0.008901569186875891, 0.0087890625,0.008870431893687707]),
+    water: avgArray([0.12171615008156607, 0.12031954350927249, 0.118798828125, 0.11989867109634553]),
+    ghg: avgArray([0.019810766721044044, 0.019583452211126964, 0.0193359375, 0.01951495016611296])
   },
   milk : {
-    land: 1.2,
-    water: 1020,
-    ghg: 1.39
+    land: 0.19651006711409397,
+    water: 0.16703355704697986,
+    ghg: 0.22762416107382552
   },
   butter: {
-    land: 13.8,
-    water: 5553,
-    ghg: 11.52
+    land: 0.19166666666666668,
+    water: 0.077125,
+    ghg: 0.16
   },
   cheese: {
-    land: 10.2,
-    water: 310+439+4264,
-    ghg: 8.86
+    land: 0.25942196531791906,
+    water: 0.12749826589595376,
+    ghg: 0.22534104046242776
   },
   beef: {
-    usda:'beef',
-    land: 20.9,
-    water: 15415,
-    ghg: 28.73
+    land: 0.31021727748691097,
+    water: 0.22880379581151833,
+    ghg: 0.42643743455497385
   },
   chicken: {
-    usda: 'poultry',
-    land: 7.3,
-    water: 4325,
-    ghg: 4.12
+    land: 0.5091975308641975,
+    water: 0.3016820987654321,
+    ghg: 0.28738271604938276
   },
   egg: {
-    land: 3.5,
-    water: 3265,
-    ghg: 3.39
+    land: 0.24305555555555555,
+    water: 0.22673611111111108,
+    ghg: 0.23541666666666666
   },
   pork: {
-    usda:'pork',
-    land: 8.9,
-    water: 5988,
-    ghg: 5.85
+    land: 0.33642,
+    water: 0.2263464,
+    ghg: 0.22112999999999997
   },
   lamb: {
-    usda: 'lamb, veal, and game',
-    water: 8763,
-    ghg: 27.91
+    water: 0.3105388125,
+    ghg: 0.989060625
   },
   fish: {
-    usda: 'finfish and shellfish',
-    ghg: 4.41
+    ghg: 0.5355
   },
 }
+
+
+
+let landSet = [];
+let waterSet = [];
+let ghgSet = [];
+
+let cats = Object.keys(per100Cat)
+for(let i = 0; i < cats.length; i++){
+  if(per100Cat[cats[i]].land){
+    landSet.push(per100Cat[cats[i]].land)
+  }
+  if(per100Cat[cats[i]].water){
+    waterSet.push(per100Cat[cats[i]].water)
+  }
+  if(per100Cat[cats[i]].ghg){
+    ghgSet.push(per100Cat[cats[i]].ghg)
+  }
+}
+
+console.log(ghgSet)
